@@ -76,6 +76,7 @@ void initialize() {
 
   // Initialize chassis and auton selector
   chassis.initialize();
+  distance_ekf_start();
   ez::as::initialize();
   master.rumble(chassis.drive_imu_calibrated() ? "." : "---");
 }
@@ -118,6 +119,7 @@ void autonomous() {
   chassis.drive_imu_reset();                  // Reset gyro position to 0
   chassis.drive_sensor_reset();               // Reset drive sensors to 0
   chassis.odom_xyt_set(0_in, 0_in, 0_deg);    // Set the current position, you can start at a specific position with this
+  distance_ekf_reset(0.0, 0.0, 0.0);          // Keep the distance EKF aligned with the EZ-Template pose
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD);  // Set motors to hold.  This helps autonomous consistency
 
   /*

@@ -45,6 +45,7 @@
 
 // More includes here...
 #include "autons.hpp"
+#include "distance_ekf.hpp"
 #include "subsystems.hpp"
 
 
