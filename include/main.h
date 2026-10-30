@@ -47,7 +47,7 @@
 #include "autons.hpp"
 #include "distance_ekf.hpp"
 #include "subsystems.hpp"
-
+#include "cascade.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
