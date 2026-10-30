@@ -23,6 +23,9 @@ ez::Drive chassis(
 ez::tracking_wheel horiz_tracker(8, 2, 4.0);  // This tracking wheel is perpendicular to the drive wheels
 ez::tracking_wheel vert_tracker(9, 2, 4.0);   // This tracking wheel is parallel to the drive wheels
 
+bool op_control_trigger_auton = true;
+pros::controller_digital_e_t op_control_trigger_auton_button = pros::E_CONTROLLER_DIGITAL_DOWN;
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -255,13 +258,10 @@ void opcontrol() {
     // Gives you some extras to make EZ-Template ezier
     ez_template_extras();
 
+
+
     chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
-
-
-    // . . .
-    // Put more user control code here!
-    // . . .
-
+    
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
