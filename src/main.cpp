@@ -237,6 +237,12 @@ void ez_template_extras() {
   }
 }
 
+void trigger_op_auton(pros::controller_digital_e_t button, void (*auton)()) {
+  if (master.get_digital_new_press(button)) {
+    auton();
+  }
+}
+
 /**
  * Runs the operator control code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -258,7 +264,11 @@ void opcontrol() {
     // Gives you some extras to make EZ-Template ezier
     ez_template_extras();
 
+    if (op_control_trigger_auton) {
 
+      trigger_op_auton(op_control_trigger_auton_button, autonomous);
+
+    }
 
     chassis.opcontrol_arcade_flipped(ez::SPLIT);    // Flipped split arcade
     
